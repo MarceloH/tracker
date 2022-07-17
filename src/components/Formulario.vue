@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from "vue";
+import { computed, defineComponent, ref } from "vue";
 import Temporizador from "./Temporizador.vue";
 import { useStore } from "vuex";
 import { key } from "@/store";
@@ -46,28 +46,28 @@ export default defineComponent({
   components: {
     Temporizador,
   },
-  data() {
-    return {
-      descricao: "",
-      idProjeto: "",
-    };
-  },
-  methods: {
-    finalizarTarefa(tempoEmSegundos: number): void {
-      this.$emit("aoSalvarTarefa", {
+  setup(props, { emit }) {
+    const store = useStore(key)
+    
+    const descricao = ref("")
+    const idProjeto = ref("")
+
+    const projetos = computed(() => store.state.projeto.projetos)
+
+    const finalizarTarefa = (tempoEmSegundos: number): void => {
+      emit("aoSalvarTarefa", {
         duracaoEmSegundos: tempoEmSegundos,
-        descricao: this.descricao,
-        projeto: this.projetos.find(
-          (projeto) => projeto.id === this.idProjeto
-        ),
-      });
-      this.descricao = "";
-    },
-  },
-  setup() {
-    const store = useStore(key);
+        descricao: descricao.value,
+        projeto: projetos.value.find(projeto => projeto.id === idProjeto.value)
+      })
+      descricao.value = "";
+    }
+
     return {
-      projetos: computed(() => store.state.projeto.projetos),
+      descricao,
+      idProjeto,
+      projetos,
+      finalizarTarefa,
     };
   },
 });

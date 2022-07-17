@@ -1,8 +1,8 @@
 {
   "projetos": [
     {
-      "nome": "PHP",
-      "id": 2
+      "id": 2,
+      "nome": "PHP"
     },
     {
       "id": 3,
@@ -13,7 +13,7 @@
     {
       "id": 1,
       "duracaoEmSegundos": 120,
-      "descricao": "Configuração do ambiente",
+      "descricao": "Configuração do ambiente 2",
       "projeto": {
         "id": 2,
         "nome": "PHP"
@@ -36,6 +36,33 @@
         "id": 2
       },
       "id": 3
+    },
+    {
+      "duracaoEmSegundos": 1,
+      "descricao": "Estudando padrões de arquitetura",
+      "projeto": {
+        "id": 2,
+        "nome": "PHP"
+      },
+      "id": 4
+    },
+    {
+      "duracaoEmSegundos": 1,
+      "descricao": "Estudando",
+      "projeto": {
+        "id": 3,
+        "nome": "Docker"
+      },
+      "id": 5
+    },
+    {
+      "duracaoEmSegundos": 2,
+      "descricao": "teste",
+      "projeto": {
+        "id": 3,
+        "nome": "Docker"
+      },
+      "id": 6
     }
   ]
 }
