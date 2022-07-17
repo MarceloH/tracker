@@ -5,7 +5,36 @@
       "id": 2
     },
     {
-      "nome": "Docker",
+      "id": 3,
+      "nome": "Docker"
+    }
+  ],
+  "tarefas": [
+    {
+      "id": 1,
+      "duracaoEmSegundos": 120,
+      "descricao": "Configuração do ambiente",
+      "projeto": {
+        "id": 2,
+        "nome": "PHP"
+      }
+    },
+    {
+      "duracaoEmSegundos": 5,
+      "descricao": "Refatoração",
+      "projeto": {
+        "nome": "PHP",
+        "id": 2
+      },
+      "id": 2
+    },
+    {
+      "duracaoEmSegundos": 2,
+      "descricao": "Estudando padrões de projeto 2.0",
+      "projeto": {
+        "nome": "PHP",
+        "id": 2
+      },
       "id": 3
     }
   ]
