@@ -7,11 +7,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import {computed, defineComponent } from "vue";
 import Formulario from "../components/Formulario.vue";
 import Tarefa from "../components/Tarefa.vue";
 import Box from "../components/Box.vue";
 import ITarefa from "../interfaces/ITarefa";
+import { NOTIFICAR } from "@/store/tipo-mutacoes";
+import { TipoNotificacao } from "@/interfaces/INotificacao";
+import { useStore } from "@/store";
 
 export default defineComponent({
   name: "App",
@@ -33,6 +36,13 @@ export default defineComponent({
   methods: {
     adicionarTarefa(tarefa: ITarefa): void {
       this.tarefas.push(tarefa);
+    },
+    setup () {
+      const store = useStore();
+      return {
+        projetos: computed(() => store.state.projetos),
+        store
+      };
     }
   },
 });
