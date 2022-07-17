@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import {computed, defineComponent } from "vue";
+import { computed, defineComponent } from "vue";
 import Formulario from "../components/Formulario.vue";
 import Tarefa from "../components/Tarefa.vue";
 import Box from "../components/Box.vue";
@@ -35,15 +35,23 @@ export default defineComponent({
   },
   methods: {
     adicionarTarefa(tarefa: ITarefa): void {
+      if (!tarefa.projeto) {
+        this.store.commit(NOTIFICAR, {
+          titulo: "Ops!",
+          texto: "Selecione um projeto antes de finalizar a tarefa!",
+          tipo: TipoNotificacao.ERRO,
+        });
+        return;
+      }
       this.tarefas.push(tarefa);
     },
-    setup () {
-      const store = useStore();
-      return {
-        projetos: computed(() => store.state.projetos),
-        store
-      };
-    }
+  },
+  setup() {
+    const store = useStore();
+    return {
+      projetos: computed(() => store.state.projetos),
+      store,
+    };
   },
 });
 </script>
